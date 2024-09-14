@@ -125,7 +125,7 @@ async def status_message_f(
         else:
             if msg != prev_mess:
                 try:
-                    await to_edit.edit(msg, parse_mode="html")
+                    await to_edit.edit(msg, parse_mode="HTML")
                 except MessageIdInvalid as df:
                     break
                 except MessageNotModified as ep:
