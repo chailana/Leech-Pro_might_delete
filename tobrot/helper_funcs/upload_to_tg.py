@@ -333,7 +333,7 @@ async def upload_single_file(
             document=local_file_name,
             thumb=thumb,
             caption=caption_str,
-            parse_mode="html",
+            parse_mode="HTML",
             disable_notification=True,
             progress=prog.progress_for_pyrogram,
             progress_args=(
@@ -422,7 +422,7 @@ async def upload_single_file(
                             media=local_file_name,
                             thumb=thumb,
                             caption=caption_str,
-                            parse_mode="html",
+                            parse_mode="HTML",
                             width=width,
                             height=height,
                             duration=duration,
@@ -434,7 +434,7 @@ async def upload_single_file(
                     sent_message = await message.reply_video(
                         video=local_file_name,
                         caption=caption_str,
-                        parse_mode="html",
+                        parse_mode="HTML",
                         duration=duration,
                         width=width,
                         height=height,
@@ -477,7 +477,7 @@ async def upload_single_file(
                             media=local_file_name,
                             thumb=thumb,
                             caption=caption_str,
-                            parse_mode="html",
+                            parse_mode="HTML",
                             duration=duration,
                             performer=artist,
                             title=title,
@@ -487,7 +487,7 @@ async def upload_single_file(
                     sent_message = await message.reply_audio(
                         audio=local_file_name,
                         caption=caption_str,
-                        parse_mode="html",
+                        parse_mode="HTML",
                         duration=duration,
                         performer=artist,
                         title=title,
@@ -521,7 +521,7 @@ async def upload_single_file(
                             media=local_file_name,
                             thumb=thumb,
                             caption=caption_str,
-                            parse_mode="html",
+                            parse_mode="HTML",
                         )
                     )
                 else:
@@ -529,7 +529,7 @@ async def upload_single_file(
                         document=local_file_name,
                         thumb=thumb,
                         caption=caption_str,
-                        parse_mode="html",
+                        parse_mode="HTML",
                         disable_notification=True,
                         progress=prog.progress_for_pyrogram,
                         progress_args=(
