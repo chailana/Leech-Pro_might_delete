@@ -1,9 +1,9 @@
 flask
 aiohttp
-aria2p==0.9.1
+aria2p
 hachoir
 Pillow
-pyrogram==2.0.106
+pyrogram
 tgcrypto
 yt_dlp
 hurry.filesize
