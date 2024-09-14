@@ -17,8 +17,8 @@ if [[ -n $CONFIG_ENV_URL ]]; then
   wget -q $CONFIG_ENV_URL -O /app/config.env
 fi
 
+echo "Starting Flask App on Port 8000..."
+python3 app.py &  # Start Flask app in the background
+
 echo "Starting Your Bot... 👾👾"
 python3 -m tobrot
-
-echo "Starting Flask App on Port 8000..."
-python3 app.py
