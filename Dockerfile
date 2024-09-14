@@ -1,15 +1,17 @@
 FROM ubuntu:20.04
 
-
-RUN mkdir ./app
-RUN chmod 777 ./app
+# Create app directory and set permissions
+RUN mkdir -p /app && chmod 777 /app
 WORKDIR /app
 
+# Environment settings
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Kolkata
 
-RUN apt -qq update --fix-missing && \
-    apt -qq install -y git \
+# Install required packages
+RUN apt-get update && \
+    apt-get install -y \
+    git \
     aria2 \
     wget \
     curl \
@@ -18,21 +20,32 @@ RUN apt -qq update --fix-missing && \
     unrar \
     tar \
     python3 \
-    ffmpeg \
     python3-pip \
+    ffmpeg \
     p7zip-full \
-    p7zip-rar
+    p7zip-rar && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN wget https://rclone.org/install.sh
-RUN bash install.sh
+# Install rclone
+RUN wget https://rclone.org/install.sh && \
+    bash install.sh
 
-RUN mkdir /app/gautam
-RUN wget -O /app/gautam/gclone.gz https://git.io/JJMSG
-RUN gzip -d /app/gautam/gclone.gz
-RUN chmod 0775 /app/gautam/gclone
+# Download and set up gclone
+RUN mkdir /app/gautam && \
+    wget -O /app/gautam/gclone.gz https://git.io/JJMSG && \
+    gzip -d /app/gautam/gclone.gz && \
+    chmod 0755 /app/gautam/gclone
 
+# Copy and install Python dependencies
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy application files
 COPY . .
-RUN chmod +x extract
-CMD ["bash","start.sh"]
+
+# Ensure start.sh is executable
+RUN chmod +x start.sh
+
+# Run the script to start the bot and app
+CMD ["bash", "start.sh"]
